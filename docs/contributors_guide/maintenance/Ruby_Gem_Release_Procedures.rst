@@ -1,5 +1,5 @@
 Ruby Gem Release Procedures
-==========================
+===========================
 
 This section will decribe the release procedures for the SIMP Ruby gems
 used to build and test SIMP components. Specifically, it describes the
