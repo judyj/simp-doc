@@ -1,9 +1,9 @@
-RubyGem Release Procedures
+Ruby Gem Release Procedures
 ==========================
 
 This section will decribe the release procedures for the SIMP Ruby gems
 used to build and test SIMP components. Specifically, it describes the
-per-component procedures to tag a `GitHub`_ release and then deploy
+per-component procedures to create a `GitHub`_ release and then deploy
 that release to `RubyGems.org`_.  The relevant components include
 
 * ``rubygem-simp-beaker-helpers``
@@ -105,7 +105,7 @@ you can proceed with the tag and release steps.
 
      .. code-block:: bash
 
-        rvm all do gem install dist/simp-rake-helpers-3.7.0.gem
+        rvm all do gem install dist/simp-rake-helpers-4.0.1.gem
 
    * Download the latest versions of most of the SIMP components using
      the ``simp-core`` project.
@@ -149,35 +149,29 @@ To create the annotated tag:
 
    .. code-block:: bash
 
-      git clone git@github.com:simp/pupmod-simp-iptables.git
-      cd pupmod-simp-iptables
+      git clone git@github.com:simp/rubygem-simp-rake-helpers.git
+      cd rubygem-simp-rake-helpers
       git checkout master # this step isn't needed for master branch
 
 #. Generate the changelog content
 
+   * FIXME Extract the changelog content from the CHANGELOG.md
+
    .. code-block:: bash
 
-      bundle update
-      bundle exec rake changelog_annotation > foo
+      vim foo
 
 #. Create the annotated tag.  In this example the content of 'foo' is::
 
-      Release of 6.0.2
+      Release of 4.0.1
 
-      * Wed May 24 2017 Brandon Riden <brandon.riden@onyxpoint.com> - 6.0.2-0
-        - Added a workaround for Puppet 4.10 type issues
-          - There was a bug in Puppet where all lookup() Hash keys were being converted
-            into Strings even if they were another data type
-          - This is fixed in Puppet > 4.10.2 but this patch will remain for backwards
-            compatibility
-        - Update puppet dependency in metadata.json
-        - Remove OBE pe dependency in metadata.json
-
+      * Reverted the bundler pinning since it was causing too many issues on CI
+        systems
 
    .. code-block:: bash
 
-      git tag -a 6.0.2 -F foo
-      git push origin 6.0.2
+      git tag -a 4.0.1 -F foo
+      git push origin 4.0.1
 
    .. NOTE::
 

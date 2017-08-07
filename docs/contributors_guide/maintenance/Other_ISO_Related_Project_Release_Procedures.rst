@@ -4,7 +4,7 @@ Other ISO-Related Project Release Procedures
 This section will describe the release procedures we use for the
 miscellaneous, non-Puppet-module components required to build a
 SIMP ISO.  Specifically, it describes the per-component procedures
-to tag a `GitHub`_ release and then deploy that release to
+to create a `GitHub`_ release and then deploy that release to
 `packagecloud`_.  The relevant components include
 
 * ``rubygem-simp-cli``
@@ -46,7 +46,7 @@ you can proceed with the tag and release steps.
         git fetch -t origin
 
         # manually figure out which is last tag
-       
+
         git diff tags/<last release tag> --name-only
 
         # manually verify mission-impacting changes have been
@@ -80,22 +80,23 @@ you can proceed with the tag and release steps.
    * FIXME These components do not necessarily have standard test
      targets.  So, check for existing test targets by running
      ``rake -T`` and/or examining the ``.travis.yml`` file, and then
-     run all test-related targets.  
+     run all test-related targets.
 
 #. Verify the RPM for this component can be used to upgrade the last
    full SIMP release and interoperates with it.  For both CentOS 6
    and CentOS 7, do the following:
 
    * Bring up a CentOS server that was kicked from the appropriate SIMP
-     ISO and for which ``simp config`` and ``simp bootstrap`` has been run.
+     ISO and for which ``simp config`` and ``simp bootstrap`` has been
+     run.
 
      .. NOTE::
 
         The `simp-packer`_ project is the easiest way to create a SIMP
         VM that has been bootstrapped.
 
-   * Copy the component RPM generated from the above RPM verification step
-     to the server and install with yum.  For example,
+   * Copy the component RPM generated from the above RPM verification
+     step to the server and install with yum.  For example,
 
      .. code-block:: bash
 
@@ -106,8 +107,8 @@ you can proceed with the tag and release steps.
         If the component requires updated dependencies, those RPMs will
         have to be built and installed at the same time.
 
-   * Verify puppet agent runs succeed on the puppet master and client.
-     On each server
+   * Verify the ``puppet agent`` runs succeed on the Puppet master
+     and client.  On each server
 
      .. code-block:: bash
 
@@ -138,7 +139,9 @@ you can proceed with the tag and release steps.
 
     .. code-block:: bash
 
-       PUPPET_VERSION="~> 4.8.2" SIMP_BUILD_verbose=yes SIMP_PKG_verbose=yes \
+       PUPPET_VERSION="~> 4.8.2" \
+       SIMP_BUILD_verbose=yes \
+       SIMP_PKG_verbose=yes \
        SIMP_BUILD_distro=CentOS/7/x86 _64 \
        bundle exec rake build:auto[/net/ISO/Distribution_ISOs]
 
@@ -153,8 +156,8 @@ Release to GitHub
 
 FIXME.
 
-Only rubygem-simp-cli is setup of to release to GitHub when an
-annotated tag is pushed to its GitHub project and TraviCI succeeds.
+Only rubygem-simp-cli is setup of to release to GitHub, when an
+annotated tag is pushed to its GitHub project *and* TraviCI succeeds.
 Need to fix the remaining assets and then update this description.
 
 Build Signed RPM and Deploy to packagecloud

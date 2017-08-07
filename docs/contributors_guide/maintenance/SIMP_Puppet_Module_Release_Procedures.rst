@@ -3,7 +3,7 @@ SIMP-Owned Puppet Module Tag And Release Procedures
 
 This section will describe the partially-automated, release procedures
 we use for SIMP-owned Puppet modules.  Specifically, it describes the
-procedures to tag a release for a Puppet module project in `GitHub`_
+procedures to create a release for a Puppet module project in `GitHub`_
 and then deploy that release to `PuppetForge`_ and `packagecloud`_. For
 demonstration purposes, we will be using the ``pupmod-simp-iptables``
 project, which uses the ``master`` branch as its development branch.
@@ -190,8 +190,10 @@ you can proceed with the tag and release steps.
 
      .. NOTE::
 
-        If the component requires updated dependencies, those RPMs will
-        have to be built and installed at the same time.
+        * If the component requires updated dependencies, those RPMs will
+          have to be built and installed at the same time.
+
+        * Puppet agent runs will be tested in the R10K deploy step below.
 
 #. Verify the RPM for this component can be used to create SIMP ISOs
    for CentoOS 6 and CentOS 7, each of which can be configured via

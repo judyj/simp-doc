@@ -33,7 +33,7 @@ compiles existing, released component RPMs into an ISO.
 
    SIMP_Puppet_Module_Release_Procedures
    Forked_Puppet_Module_Release_Procedures
-   RubyGem_Release_Procedures
+   Ruby_Gem_Release_Procedures
    Other_ISO_Related_Project_Release_Procedures
    ISO_Release_Procedures
 
