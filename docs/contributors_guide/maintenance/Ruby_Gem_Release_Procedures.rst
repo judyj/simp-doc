@@ -125,13 +125,14 @@ you can proceed with the tag and release steps.
      - All projects in ``src/rubygems/``
      - All SIMP-owned projects in ``src/puppet/modules/``
 
-   * In each project listed above, execute
+   * In each project listed above, execute the rake tasks affected
+     by the changes.  In this case, we assume the spec-related
+     task was affected.
 
      .. code-block:: bash
 
         bundle update
         bundle exec rake spec
-        bundle exec rake beaker:suites || bundle exec rake acceptance
 
 
 Release To GitHub and Deploy to RubyGems.org

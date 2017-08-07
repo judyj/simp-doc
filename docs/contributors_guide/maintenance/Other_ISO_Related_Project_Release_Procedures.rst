@@ -75,12 +75,35 @@ you can proceed with the tag and release steps.
       bundle exec rake pkg:rpm[epel-6-x86_64]
       bundle exec rake pkg:rpm[epel-7-x86_64]
 
-#. Verify the component's unit and/or acceptance tests have succeeded
+#. Verify the component's unit test have succeeded
 
-   * FIXME These components do not necessarily have standard test
-     targets.  So, check for existing test targets by running
-     ``rake -T`` and/or examining the ``.travis.yml`` file, and then
-     run all test-related targets.
+   * Navigate to the project's TravisCI results page and verify the
+     tests for the development branch to be tagged and released have
+     passed.  For our project, this page is
+     https://travis-ci.org/simp/simp-adapter/branches
+
+     .. IMPORTANT::
+
+        If the tests in TravisCI fail, you **must** fix them before
+        proceeding.  The automated release procedures will only
+        succeed, if the unit tests succeed in TravisCI.
+
+#. Verify the component's acceptance tests have succeeded
+
+   * Run the appropriate acceptance test rake task, if it exists.
+     For this project, ``rake beaker:suites`` is the appropriate task
+
+     .. code-block:: bash
+
+       bundle exec rake beaker:suites
+
+     .. NOTE::
+
+        * If the GitLab instance for the project is configured and
+          current (it is sync'd every 3 hours), you can look at
+          the latest acceptance test results run by GitLab.  For
+          our project, the results would be at
+          https://gitlab.com/simp/rubygem-simp-rake-helpers/pipelines.
 
 #. Verify the RPM for this component can be used to upgrade the last
    full SIMP release and interoperates with it.  For both CentOS 6
@@ -159,6 +182,56 @@ FIXME.
 Only rubygem-simp-cli is setup of to release to GitHub, when an
 annotated tag is pushed to its GitHub project *and* TraviCI succeeds.
 Need to fix the remaining assets and then update this description.
+
+Each SIMP ISO-related project is configured to automatically create a
+`GitHub`_ release, when an annotated tag is created for the `GitHub`_ 
+project **and** the TravisCI tests for the annotated tag push succeed.
+To create the annotated tag:
+
+#. Clone the component repository and checkout the development
+   branch to be tagged
+
+   .. code-block:: bash
+
+      git clone git@github.com:simp/simp-adapter.git
+      cd simp-adapter
+      git checkout master # this step isn't needed for master branch
+
+#. Generate the changelog content
+
+   * FIXME Extract the changelog content from the ``CHANGELOG.md``,
+     ``CHANGELOG``, or ``build/<component>.spec`` file
+
+   .. code-block:: bash
+
+      vim foo
+
+#. Create the annotated tag.  In this example the content of 'foo' is::
+
+      Release of 0.0.4
+
+      * Removed packaged auth.conf in favor of managing it with Puppet
+
+   .. code-block:: bash
+
+      git tag -a 0.0.4 -F foo
+      git push origin 0.0.4
+
+   .. NOTE::
+
+      For markdown-style changelogs, you will need to specify
+      ``--cleanup=whitespace`` so comment headers are not stripped.
+
+#. Verify TravisCi completes successfully
+
+   .. IMPORTANT::
+      If any of the required TravisCI builds for the project fail, for
+      example due to intermittent connectivity problems with `GitHub`_,
+      you can complete the release process by manually restarting the
+      failed build on the Travis page for that build.
+
+#. Verify release exists on `GitHub`_.  This release will have been created by
+   ``simp-auto``.
 
 Build Signed RPM and Deploy to packagecloud
 --------------------------------------------

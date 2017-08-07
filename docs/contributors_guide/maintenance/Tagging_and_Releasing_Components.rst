@@ -5,10 +5,10 @@ This section describes the release procedures for SIMP.  The SIMP
 Team releases:
 
 * Individual Puppet modules as tar files to `PuppetForge`_
-* Individual Puppet modules as signed rpms files to `packagecloud`_
+* Individual Puppet modules as signed RPMs to `packagecloud`_
 * Ruby gems for building and testing to `RubyGems.org`_
 * Miscellaneous projects required to create a SIMP-system ISO as
-  signed rpms files to `packagecloud`_
+  signed RPMs to `packagecloud`_
 
 * SIMP-system ISOs to `simp-project.com`_
 
