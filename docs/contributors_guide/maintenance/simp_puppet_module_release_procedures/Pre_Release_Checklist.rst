@@ -22,6 +22,7 @@ you can proceed with the tag and release steps.
 
 Verify a release is warranted
 -----------------------------
+
 This check verifies a new release is warranted and the version has been
 properly update:
 
@@ -48,6 +49,7 @@ properly update:
 
 Verify the CHANGELOG
 --------------------
+
 This check verifies that the CHANGELOG information can be properly
 extracted:
 
@@ -73,6 +75,7 @@ extracted:
 
 Verify the component's dependencies
 -----------------------------------
+
 This check verifies the component's dependencies are correct in the
 ``metadata.json`` and ``build/rpm_metadata/requires`` files:
 
@@ -94,6 +97,7 @@ This check verifies the component's dependencies are correct in the
 
 Verify a Puppet module can be created
 -------------------------------------
+
 This check verifies that a `PuppetForge`_-deployable Puppet module can
 be created:
 
@@ -104,6 +108,7 @@ be created:
 
 Verify RPMs can be created
 --------------------------
+
 This check verifies that CentOS 6 and CentOS 7 RPMs can be generated
 for this module:
 
@@ -114,6 +119,7 @@ for this module:
 
 Verify unit tests pass
 ----------------------
+
 This check verifies that the component's unit tests have succeeded
 in `TravisCI`_:
 
@@ -130,6 +136,7 @@ in `TravisCI`_:
 
 Verify acceptance tests pass
 ----------------------------
+
 This check verifies that the component's acceptance tests have 
 succeeded:
 
@@ -153,6 +160,7 @@ succeeded:
 
 Verify interoperability with last SIMP release
 ----------------------------------------------
+
 This check verifies that this version of the component interoperates
 with the last full SIMP release. For many components, the best
 automated way of doing this is by running the ``pupmod-simp-simp``
@@ -194,6 +202,7 @@ integration tests.
 
 Verify the component RPM upgrade succeeds
 -----------------------------------------
+
 This check verifies that the RPM for this component can be used to
 upgrade the last full SIMP release.  For both CentOS 6 and CentOS 7,
 do the following:
@@ -224,6 +233,7 @@ do the following:
 
 Verify the component yields valid SIMP ISOs
 -------------------------------------------
+
 This check verifies that with this component, valid SIMP ISOs for
 for CentoOS 6 and CentOS 7 can be built, configured via
 ``simp config``, and then bootstrapped via ``simp bootstrap``.  For
@@ -263,6 +273,7 @@ CentOS 6 and CentOS 7:
 
 Verify the component works in an actual SIMP system
 ---------------------------------------------------
+
 This is the *Eat Our Own Dogfood* soak test. It verifies that
 the component operates as expected on a typical SIMP system.  For
 this verification, we install the component via R10K in the SIMP
