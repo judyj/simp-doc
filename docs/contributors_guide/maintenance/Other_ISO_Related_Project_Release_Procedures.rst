@@ -3,9 +3,7 @@ Other ISO-Related Project Release Procedures
 
 This section will describe the release procedures we use for the
 miscellaneous, non-Puppet-module components required to build a
-SIMP ISO.  Specifically, it describes the per-component procedures
-to create a `GitHub`_ release and then deploy that release to
-`packagecloud`_.  The relevant components include
+SIMP ISO.  The relevant components include
 
 * ``rubygem-simp-cli``
 * ``simp-adapter``

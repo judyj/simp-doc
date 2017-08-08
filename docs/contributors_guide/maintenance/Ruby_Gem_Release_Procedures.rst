@@ -2,9 +2,7 @@ Ruby Gem Release Procedures
 ===========================
 
 This section will decribe the release procedures for the SIMP Ruby gems
-used to build and test SIMP components. Specifically, it describes the
-per-component procedures to create a `GitHub`_ release and then deploy
-that release to `RubyGems.org`_.  The relevant components include
+used to build and test SIMP components. The relevant components include
 
 * ``rubygem-simp-beaker-helpers``
 * ``rubygem-simp-rake-helpers``
