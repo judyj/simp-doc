@@ -19,6 +19,25 @@ for which SIMP is not the owner.
    ``metadata.json`` file.  The value for the ``name`` key will be
    of the form *<owner>*-*<module name>*.
 
+* `Pre-Release Checklist`_
+* `Release to PuppetForge`_
+* `Build Signed RPM and Deploy to packagecloud`_
+
+Pre-Release Checklist
+---------------------
+
+The only verification step that needs to be done is to ensure that
+the version of each project being released is the version that has
+been used for testing SIMP components in unit, acceptance, and
+SIMP ISO validation tests:
+
+#. Verify the ``.fixtures.yml``, ``metadata.json``, and
+   ``build/rpm_metadata/requires`` files for SIMP components that
+   depend upon the component match the version being released.
+
+#. Verify the ``Puppetfile.tracking`` and ``Puppetfile.stable`` files
+   of the ``simp-core`` project match the version being released.
+
 Release to PuppetForge
 ----------------------
 
@@ -26,13 +45,18 @@ Release to PuppetForge
   we must request a release from the owner.  
 
 * If the owner will not release the version we need, our only recourse
-  is to create a SIMP-owned fork of the project, create/update the,
-  `.travis.yml` file for automated release and deploy from tag,
-  and, as time permits, make any adjustments necessary to ensure the
-  original owner's tests run.
+  is to create a SIMP-owned fork of the project :
 
-RPM Deploy to packagecloud
---------------------------
+  * Fork the GitHub project
+  * Change the owner to 'simp' in the ``metadata.json`` file
+  * Create/update the ``.travis.yml`` file to allow automated release
+    and deploy from an annotated GitHub tag
+  * As time permits, make any adjustments necessary to ensure the
+    original owner's tests run.
+  * Follow SIMP-owned puppet module release procedures.
+
+Build Signed RPM and Deploy to packagecloud
+-------------------------------------------
 
 FILL-ME-IN
 

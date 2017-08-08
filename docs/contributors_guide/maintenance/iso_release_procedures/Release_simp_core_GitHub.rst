@@ -3,10 +3,8 @@ Release ``simp-core`` to GitHub
 
 ``simp-core`` is configured to to automatically create a `GitHub`_ 
 release, when an annotated tag is created for the `GitHub`_
-project **and** the TravisCI tests for the annotated tag push succeed.
-(FIXME:  ``simp-core`` .travis.yml has broken logic to push to
-PuppetForge, as well.)
-To create the annotated tag:
+project **and** the `TravisCI`_ tests for the annotated tag push succeed.
+(Once SIMP-3402 is addressed.) To create the annotated tag:
 
 #. Clone the component repository and checkout the development
    branch to be tagged
@@ -26,7 +24,7 @@ To create the annotated tag:
       git tag -a 6.0.2 -F Changelog.rst --cleanup--whitespace
       git push origin 6.0.2
 
-#. Verify TravisCi completes successfully
+#. Verify `TravisCi`_ completes successfully
 
    .. IMPORTANT::
       If any of the required TravisCI builds for the project fail, for
@@ -41,3 +39,4 @@ To create the annotated tag:
 .. _packagecloud: https://packagecloud.io/simp-project
 .. _simp-project: http://simp-project.com/ISO/SIMP
 .. _simp-packer: https://github.com/simp/simp-packer
+.. _TravisCI: https://travis-ci.org

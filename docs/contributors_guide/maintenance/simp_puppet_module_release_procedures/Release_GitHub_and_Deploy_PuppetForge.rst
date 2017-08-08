@@ -3,7 +3,7 @@ Release to GitHub and Deploy to PuppetForge
 
 Each SIMP component is configured to automatically create a `GitHub`_
 release and push the release to `PuppetForge`_, when an annotated tag
-is created for the `GitHub`_ project **and** the TravisCI tests for
+is created for the `GitHub`_ project **and** the `TravisCI`_ tests for
 the annotated tag push succeed.  To create the annotated tag:
 
 #. Clone the component repository and checkout the development
@@ -46,7 +46,7 @@ the annotated tag push succeed.  To create the annotated tag:
        For markdown-style changelogs, you will need to specify
        ``--cleanup=whitespace`` so comment headers are not stripped.
 
-#. Verify TravisCi completes successfully
+#. Verify `TravisCi`_ completes successfully
 
    .. IMPORTANT::
       If any of the required TravisCI builds for the project fail, for
@@ -59,3 +59,4 @@ the annotated tag push succeed.  To create the annotated tag:
 
 .. _GitHub: https://github.com
 .. _PuppetForge: https://forge.puppet.com
+.. _TravisCI: https://travis-ci.org

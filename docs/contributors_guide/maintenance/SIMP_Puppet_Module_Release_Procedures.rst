@@ -2,9 +2,11 @@ SIMP-Owned Puppet Module Tag And Release Procedures
 ===================================================
 
 This section will describe the partially-automated, release procedures
-we use for SIMP-owned Puppet modules.  For demonstration purposes, we will
-be using the ``pupmod-simp-iptables`` project, which uses the ``master``
-branch as its development branch.
+we use for SIMP-owned Puppet modules.
+
+For demonstration purposes, we will be using the
+``pupmod-simp-iptables`` project, which uses the ``master`` branch as
+its development branch.
 
 .. NOTE::
 

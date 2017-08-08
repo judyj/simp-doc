@@ -31,9 +31,11 @@ exist as signed RPMs in `packagecloud`_.   This will include:
 * Utility RPMs (``rubygem-simp-cli``, ``simp-adapter``, ``simp-utils``,
   etc.)
 * ``simp-doc``
-* FIXME - should this include OS RPMs?
-* FIXME - Has this been automated already using the tags in the
-  (presumed) updated ``Puppetfile.stable``?
+* OS RPMs?
+
+Procedure:
+FILL-ME-IN (Has the pull of the RPMs using ``Puppetfile.stable`` already
+been updated in Trevor's build script?)
 
 Verify a valid Puppetfile.stable exists
 ---------------------------------------
@@ -54,14 +56,15 @@ Verify the Changelog.rst
 This check is to verify that the ``simp-core`` Changelog.rst has
 been updated:
 
-* FIXME - Has the generation of the Changelog.rst from component
+* Manually inspect
+* Has the generation of the Changelog.rst from component
   CHANGELOGs been automated in any fashion?
 
 Verify the simp-core RPMs can be created
 ----------------------------------------
 
-This check verifies that the ``simp-core`` RPM can be generated
-for this module
+This check verifies that CentOS 6 and CentOS 7  ``simp-core`` RPMs can
+be generated:
 
 .. code-block:: bash
 
@@ -99,8 +102,8 @@ built from the local simp-core RPM and RPMs pushed to packagecloud.
 Verify SIMP ISO boot options work
 ---------------------------------
 
-This check is verifies that a server booted from the SIMP ISO can
-be bootstrapped for the 'simp' scenario and following boot options
+This hefty check verifies that a server booted from the SIMP ISO can
+be bootstrapped for the 'simp' scenario and following boot options:
 
 * Using default boot option
 * Using disk encryption boot option
@@ -115,11 +118,36 @@ be bootstrapped for the 'simp' scenario and following boot options
 * Using linux-min and FIPS disabled boot options
 * Using linux-min, disk encryption, and FIPS disabled boot options
 
-.. NOTE::
+For the default boot option and and FIPS disabled boot option
+test cases, the `simp-packer`_ project is the easiest way to
+verify a SIMP VM can be booted from the ISO and bootstrapped.  Otherwise,
+the check has to be done manually:
 
-   For the default boot option and and FIPS disabled boot option
-   test cases, the `simp-packer`_ project is the easiest way to
-   verify a SIMP VM can be booted from the ISO and bootstrapped.
+* Boot a VM with the SIMP ISO
+* Select the appropriate boot options
+* Once the server boots, login to the server as root
+* Bootstrap the system
+
+  .. code-block:: bash
+
+     simp config
+     simp bootstrap
+     reboot
+
+* Login to the server as root and run ``puppet agent -t`` until the
+  results are stable
+* Verify the server is/is not in FIPS mode by inspecting `/proc/sys/crypto/fips_enabled`
+* Verify the appropriate disk is/is not encrypted by executing
+
+  .. code-block:: bash
+
+     blkid
+
+* Verify the appropriate disk partitioning
+
+  .. code-block:: bash
+
+     lsblk
 
 Verify component interoperability
 ---------------------------------
@@ -130,9 +158,8 @@ extensive, cross-component, integration tests.)
 
 .. NOTE::
    If ``pupmod-simp-simp`` acceptance tests have effectively 
-   already been executed with the correct versions of modules
-   in its ``fixtures.yml`` file and passed, (e.g., in GitLab),
-   you can skip this painful step.
+   already been passed with the correct versions of modules
+   (e.g., in GitLab), you can skip this painful step.
 
 #. Determine the version of ``pupmod-simp-simp`` to be used in this
    SIMP ISO release.  This version can be pulled from the
@@ -184,6 +211,8 @@ tested in acceptance/simp-packer tests) do function as advertised:
 * The SIMP server can be converted from FIPS disabled to FIPS
   enabled mode.
 * What else?
+
+FILL-ME-IN  test procedures
 
 Verify SIMP server RPM install
 ------------------------------

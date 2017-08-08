@@ -55,9 +55,9 @@ extracted:
 
 #. Run the ``changelog_annotation`` rake task
 
-.. code-block:: bash
+   .. code-block:: bash
 
-   bundle exec rake changelog_annotation
+      bundle exec rake changelog_annotation
 
 #. Manually verify the changelog information is emitted.
 
@@ -235,7 +235,8 @@ Verify the component yields valid SIMP ISOs
 -------------------------------------------
 
 This check verifies that with this component, valid SIMP ISOs for
-for CentoOS 6 and CentOS 7 can be built, configured via
+for CentoOS 6 and CentOS 7 can be built. An ISO is considered
+to be valid when a SIMP server can be booted from it, configured via
 ``simp config``, and then bootstrapped via ``simp bootstrap``.  For
 CentOS 6 and CentOS 7:
 
