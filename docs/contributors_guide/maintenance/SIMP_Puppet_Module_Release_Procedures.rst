@@ -132,8 +132,9 @@ you can proceed with the tag and release steps.
           be at https://gitlab.com/simp/pupmod-simp-iptables/pipelines.
 
 #. Verify this version of the component interoperates with the last full
-   SIMP release. The best automated way of doing this is by running the
-   ``pupmod-simp-simp`` acceptance tests.
+   SIMP release. For many components, the best automated way of doing
+   this is by running the ``pupmod-simp-simp`` acceptance tests, as
+   these tests provide extensive, cross-component, integration tests.
 
    * Determine the version of ``pupmod-simp-simp`` used in the last SIMP
      release.  This version can be pulled from the ``Puppetfile.stable``
@@ -172,7 +173,7 @@ you can proceed with the tag and release steps.
    full SIMP release.  For both CentOS 6 and CentOS 7, do the
    following:
 
-   * Bring up a CentOS server that was kicked from the appropriate SIMP
+   * Bring up a CentOS server that was booted from the appropriate SIMP
      ISO and for which ``simp config`` and ``simp bootstrap`` has been
      run.
 
@@ -231,7 +232,9 @@ you can proceed with the tag and release steps.
 
     * Use ``simp-packer`` to verify the SIMP ISO can be bootstrapped
 
-#. Verify the module can be installed via R10K in the test environment
+#. Verify the module operates as expected on a typical SIMP system,
+   by installing it via R10K in the SIMP development environment
+   (The 'Eat Your Own Dogfood' soak test).
 
    * Create a branch in the control repo for the version under test.
    * Use the module-portion of the ``Puppetfile.tracking`` from the
@@ -246,7 +249,6 @@ you can proceed with the tag and release steps.
    * Assign nodes to the test environment using your ENC
    * Verify ``puppet agent -t`` successfully runs for each node
      assigned to the test environment.
-
 
 Release to GitHub and Deploy to PuppetForge
 -------------------------------------------

@@ -109,7 +109,7 @@ you can proceed with the tag and release steps.
    full SIMP release and interoperates with it.  For both CentOS 6
    and CentOS 7, do the following:
 
-   * Bring up a CentOS server that was kicked from the appropriate SIMP
+   * Bring up a CentOS server that was booted from the appropriate SIMP
      ISO and for which ``simp config`` and ``simp bootstrap`` has been
      run.
 
